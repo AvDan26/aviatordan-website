@@ -134,3 +134,9 @@ On Mac, use Command + Shift + R.
 - Added aircraft, camera, community and globe icons.
 - Updated the goals to Entertain, Create, Connect and Inspire.
 - Added the supplied descriptions and responsive divider layout.
+
+
+## Version 1.25
+
+- Replaced the Entertain aircraft icon with a happy face outline.
+- Removed the duplicate full-width divider lines beneath the mobile goal items.
