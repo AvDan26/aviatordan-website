@@ -49,3 +49,9 @@ On Mac, use Command + Shift + R.
 - Removed About from the navigation
 - Updated Community card text
 - Replaced the footer bar and social links with a plain copyright line
+
+## Version 1.4 emergency fix
+
+- Fixed CSS, JavaScript, favicon, and image paths on `/community/` and `/contact/`.
+- All local assets now use root-relative URLs such as `/assets/css/styles.css`.
+- Clean URLs remain enabled.
