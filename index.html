@@ -12,7 +12,7 @@
   <title>AviatorDan | Everything Aviation</title>
   <link rel="icon" href="/assets/images/favicon.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=1.19">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=1.20">
 </head>
 <body>
   
@@ -106,8 +106,32 @@
 
         <div class="about-layout">
           <aside class="creator-visual reveal">
-            <div class="photo-frame">
-              <img src="/assets/images/dan-cockpit.webp" alt="Dan sitting inside an aircraft cockpit" loading="lazy">
+            <div class="about-slideshow" data-about-slideshow aria-label="AviatorDan photo slideshow">
+              <div class="about-slides" data-slides>
+                <figure class="about-slide is-active">
+                  <img src="/assets/images/about-slideshow/about-slide-1.jpg" alt="AviatorDan seated inside an aircraft cockpit">
+                </figure>
+                <figure class="about-slide">
+                  <img src="/assets/images/about-slideshow/about-slide-2.jpg" alt="AviatorDan standing beside a large aircraft engine">
+                </figure>
+                <figure class="about-slide">
+                  <img src="/assets/images/about-slideshow/about-slide-3.jpg" alt="AviatorDan standing in front of an Edelweiss aircraft">
+                </figure>
+                <figure class="about-slide">
+                  <img src="/assets/images/about-slideshow/about-slide-4.jpg" alt="AviatorDan working beside an aircraft on the apron">
+                </figure>
+                <figure class="about-slide">
+                  <img src="/assets/images/about-slideshow/about-slide-5.jpg" alt="AviatorDan standing beside an aircraft doorway">
+                </figure>
+              </div>
+
+              <div class="about-slide-dots" role="tablist" aria-label="Choose a slideshow image">
+                <button class="about-slide-dot is-active" type="button" role="tab" aria-selected="true" aria-label="Show image 1" data-slide-index="0"></button>
+                <button class="about-slide-dot" type="button" role="tab" aria-selected="false" aria-label="Show image 2" data-slide-index="1"></button>
+                <button class="about-slide-dot" type="button" role="tab" aria-selected="false" aria-label="Show image 3" data-slide-index="2"></button>
+                <button class="about-slide-dot" type="button" role="tab" aria-selected="false" aria-label="Show image 4" data-slide-index="3"></button>
+                <button class="about-slide-dot" type="button" role="tab" aria-selected="false" aria-label="Show image 5" data-slide-index="4"></button>
+              </div>
             </div>
           </aside>
 
@@ -243,6 +267,6 @@
   <p class="copyright">© 2026 AviatorDan</p>
 </footer>
 
-  <script src="/assets/js/main.js?v=1.19"></script>
+  <script src="/assets/js/main.js?v=1.20"></script>
 </body>
 </html>

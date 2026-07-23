@@ -109,3 +109,12 @@ On Mac, use Command + Shift + R.
 - Increased cloud coverage across the lower part of the hero.
 - Removed expensive mobile blur and box-shadow rendering.
 - Changed cloud animation to use scroll position without layout reads and smooth interpolation.
+
+
+## Version 1.20
+
+- Replaced the About photo with a five-image slideshow using the supplied photographs.
+- Preserved the original portrait aspect ratio.
+- Added Instagram-style position dots beneath the slideshow.
+- Added automatic cycling, dot navigation and mobile swipe gestures.
+- Pauses automatic cycling while hovered on desktop.

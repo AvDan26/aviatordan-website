@@ -194,3 +194,73 @@ if (cloudReveal) {
   window.addEventListener('scroll', setCloudTarget, { passive: true });
   window.addEventListener('resize', setCloudTarget, { passive: true });
 }
+
+
+const aboutSlideshow = document.querySelector('[data-about-slideshow]');
+
+if (aboutSlideshow) {
+  const slides = Array.from(aboutSlideshow.querySelectorAll('.about-slide'));
+  const dots = Array.from(aboutSlideshow.querySelectorAll('.about-slide-dot'));
+  const slideArea = aboutSlideshow.querySelector('[data-slides]');
+  let activeSlide = 0;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let autoplayTimer = 0;
+
+  const showAboutSlide = (index, restartAutoplay = true) => {
+    activeSlide = (index + slides.length) % slides.length;
+
+    slides.forEach((slide, slideIndex) => {
+      slide.classList.toggle('is-active', slideIndex === activeSlide);
+    });
+
+    dots.forEach((dot, dotIndex) => {
+      const isActive = dotIndex === activeSlide;
+      dot.classList.toggle('is-active', isActive);
+      dot.setAttribute('aria-selected', String(isActive));
+    });
+
+    if (restartAutoplay) {
+      startAboutAutoplay();
+    }
+  };
+
+  const startAboutAutoplay = () => {
+    window.clearInterval(autoplayTimer);
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      autoplayTimer = window.setInterval(() => {
+        showAboutSlide(activeSlide + 1, false);
+      }, 5200);
+    }
+  };
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      showAboutSlide(Number(dot.dataset.slideIndex));
+    });
+  });
+
+  slideArea.addEventListener('touchstart', (event) => {
+    const touch = event.changedTouches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+  }, { passive: true });
+
+  slideArea.addEventListener('touchend', (event) => {
+    const touch = event.changedTouches[0];
+    const distanceX = touch.clientX - touchStartX;
+    const distanceY = touch.clientY - touchStartY;
+
+    if (Math.abs(distanceX) > 45 && Math.abs(distanceX) > Math.abs(distanceY)) {
+      showAboutSlide(activeSlide + (distanceX < 0 ? 1 : -1));
+    }
+  }, { passive: true });
+
+  aboutSlideshow.addEventListener('mouseenter', () => {
+    window.clearInterval(autoplayTimer);
+  });
+
+  aboutSlideshow.addEventListener('mouseleave', startAboutAutoplay);
+  startAboutAutoplay();
+}
