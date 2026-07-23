@@ -819,18 +819,42 @@ button {
 
 
 
-/* Premium auto-hiding navigation */
+
+/* Stable, smooth auto-hiding navigation */
 .site-header {
+  background: transparent !important;
   will-change: transform, opacity;
   transition:
-    transform 520ms cubic-bezier(.22, 1, .36, 1),
-    opacity 320ms ease;
+    transform 420ms cubic-bezier(.22, 1, .36, 1),
+    opacity 260ms ease;
+  transform: translate3d(0, 0, 0);
 }
 
 .site-header.nav-hidden {
-  transform: translate3d(0, calc(-100% - 34px), 0);
+  transform: translate3d(0, -150%, 0);
   opacity: 0;
   pointer-events: none;
+}
+
+/* Mobile Safari behaves more reliably with a fixed header than a transformed sticky header. */
+@media (max-width: 900px) {
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    top: 0;
+    width: 100%;
+    padding: max(12px, env(safe-area-inset-top)) 12px 0;
+  }
+
+  .nav-shell {
+    width: min(100%, 1180px);
+    min-height: 62px;
+    margin: 0 auto;
+  }
+
+  .site-header.nav-hidden {
+    transform: translate3d(0, calc(-100% - 28px), 0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

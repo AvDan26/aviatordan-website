@@ -82,60 +82,66 @@ if ('IntersectionObserver' in window && !reduceMotion) {
 }
 
 
-// Premium auto-hiding navigation
+// Stable auto-hiding navigation for desktop and mobile
 const siteHeader = document.querySelector('.site-header');
 
 if (siteHeader) {
-  let lastScrollY = window.scrollY;
-  let accumulatedDelta = 0;
-  let ticking = false;
+  let previousY = Math.max(window.scrollY, 0);
+  let distance = 0;
+  let framePending = false;
 
-  const hideAfter = 120;
-  const directionThreshold = 18;
+  const hideAfterY = 110;
+  const movementThreshold = 14;
 
-  const updateNavigation = () => {
-    const currentScrollY = Math.max(window.scrollY, 0);
-    const delta = currentScrollY - lastScrollY;
+  const renderHeader = () => {
+    const currentY = Math.max(window.scrollY, 0);
+    const movement = currentY - previousY;
+    const menuOpen = document.body.classList.contains('menu-open');
 
-    if (Math.sign(delta) !== Math.sign(accumulatedDelta)) {
-      accumulatedDelta = 0;
+    if (movement === 0) {
+      framePending = false;
+      return;
     }
 
-    accumulatedDelta += delta;
+    if (Math.sign(movement) !== Math.sign(distance)) {
+      distance = 0;
+    }
 
-    const menuIsOpen = document.body.classList.contains('menu-open');
+    distance += movement;
 
-    if (currentScrollY <= 12 || menuIsOpen) {
+    if (currentY <= 10 || menuOpen) {
       siteHeader.classList.remove('nav-hidden');
-      accumulatedDelta = 0;
-    } else if (
-      currentScrollY > hideAfter &&
-      accumulatedDelta > directionThreshold
-    ) {
+      distance = 0;
+    } else if (currentY > hideAfterY && distance >= movementThreshold) {
       siteHeader.classList.add('nav-hidden');
-      accumulatedDelta = 0;
-    } else if (accumulatedDelta < -directionThreshold) {
+      distance = 0;
+    } else if (distance <= -movementThreshold) {
       siteHeader.classList.remove('nav-hidden');
-      accumulatedDelta = 0;
+      distance = 0;
     }
 
-    lastScrollY = currentScrollY;
-    ticking = false;
+    previousY = currentY;
+    framePending = false;
   };
 
-  window.addEventListener(
-    'scroll',
-    () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateNavigation);
-        ticking = true;
-      }
-    },
-    { passive: true }
-  );
+  const queueHeaderUpdate = () => {
+    if (!framePending) {
+      window.requestAnimationFrame(renderHeader);
+      framePending = true;
+    }
+  };
+
+  window.addEventListener('scroll', queueHeaderUpdate, { passive: true });
+
+  window.addEventListener('orientationchange', () => {
+    siteHeader.classList.remove('nav-hidden');
+    previousY = Math.max(window.scrollY, 0);
+    distance = 0;
+  });
 
   window.addEventListener('pageshow', () => {
-    lastScrollY = window.scrollY;
     siteHeader.classList.remove('nav-hidden');
+    previousY = Math.max(window.scrollY, 0);
+    distance = 0;
   });
 }
