@@ -126,3 +126,11 @@ On Mac, use Command + Shift + R.
 - Increased cloud density and depth so the transition reads as a cloud bank rather than smoke.
 - Expanded the cloud coverage across the hero.
 - Preserved the lightweight mobile animation approach.
+
+
+## Version 1.23
+
+- Reformatted the four goals into the requested icon-led design.
+- Added aircraft, camera, community and globe icons.
+- Updated the goals to Entertain, Create, Connect and Inspire.
+- Added the supplied descriptions and responsive divider layout.

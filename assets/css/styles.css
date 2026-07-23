@@ -2359,3 +2359,117 @@ button {
     padding-top: 328px;
   }
 }
+
+
+/* Version 1.23: icon-led goals */
+
+.mission-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border: 0;
+  background: transparent;
+}
+
+.mission-item {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 9px;
+  min-height: 190px;
+  padding: 8px 28px 12px;
+  border: 0;
+  text-align: center;
+  background: transparent;
+}
+
+.mission-item + .mission-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.mission-number {
+  display: none;
+}
+
+.mission-icon {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  place-items: center;
+  margin-bottom: 1px;
+  color: #4da8ff;
+  filter: drop-shadow(0 0 10px rgba(77, 168, 255, 0.14));
+}
+
+.mission-icon svg {
+  width: 41px;
+  height: 41px;
+}
+
+.mission-item h3 {
+  margin: 0;
+  color: #57b4ff;
+  font-size: clamp(1rem, 1.4vw, 1.22rem);
+  font-weight: 680;
+  letter-spacing: -0.01em;
+}
+
+.mission-item p {
+  max-width: 265px;
+  margin: 0;
+  color: var(--muted-strong);
+  font-size: 0.94rem;
+  line-height: 1.48;
+}
+
+@media (max-width: 900px) {
+  .mission-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 26px;
+  }
+
+  .mission-item:nth-child(3)::before {
+    display: none;
+  }
+
+  .mission-item {
+    min-height: 172px;
+    padding-inline: 22px;
+  }
+}
+
+@media (max-width: 560px) {
+  .mission-list {
+    grid-template-columns: 1fr;
+    row-gap: 0;
+  }
+
+  .mission-item {
+    min-height: 0;
+    padding: 24px 12px;
+  }
+
+  .mission-item + .mission-item::before {
+    top: 0;
+    right: 18%;
+    bottom: auto;
+    left: 18%;
+    width: auto;
+    height: 1px;
+  }
+
+  .mission-item:nth-child(3)::before {
+    display: block;
+  }
+
+  .mission-item p {
+    max-width: 315px;
+  }
+}
