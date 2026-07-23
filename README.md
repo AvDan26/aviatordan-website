@@ -140,3 +140,20 @@ On Mac, use Command + Shift + R.
 
 - Replaced the Entertain aircraft icon with a happy face outline.
 - Removed the duplicate full-width divider lines beneath the mobile goal items.
+
+
+## Version 1.26
+
+Temporary public homepage enabled.
+
+- `index.html` is now the temporary “The Return of AviatorDan” page.
+- Public subpages redirect to the temporary homepage.
+- The complete previous homepage is preserved as `index.full-site.html`.
+
+### Restore the full website
+
+1. Delete the temporary `index.html`.
+2. Rename `index.full-site.html` to `index.html`.
+3. Restore the subpage files from Version 1.25, or redeploy Version 1.25 in full.
+
+This is a visual fake lock, not access control. Someone who knows a direct asset or backup-file URL may still be able to request it.
