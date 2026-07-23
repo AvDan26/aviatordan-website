@@ -20,8 +20,18 @@ if (menuButton && navLinks) {
     link.addEventListener('click', closeMenu);
   });
 
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 900) closeMenu();
+  document.addEventListener('click', (event) => {
+    if (
+      navLinks.classList.contains('is-open') &&
+      !navLinks.contains(event.target) &&
+      !menuButton.contains(event.target)
+    ) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
   });
 }
 
