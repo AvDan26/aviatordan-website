@@ -100,3 +100,12 @@ On Mac, use Command + Shift + R.
 - Corrected hero centring on desktop and mobile.
 - Made the top-left logo hide and return with the navigation controls.
 - Updated the biography copy.
+
+
+## Version 1.19
+
+- Centred the hero directly against the full viewport rather than the page container.
+- Replaced complex CSS cloud shapes with three pre-rendered transparent cloud layers.
+- Increased cloud coverage across the lower part of the hero.
+- Removed expensive mobile blur and box-shadow rendering.
+- Changed cloud animation to use scroll position without layout reads and smooth interpolation.

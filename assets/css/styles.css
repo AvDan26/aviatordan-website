@@ -1987,3 +1987,156 @@ button {
     transform: translate3d(0, calc(-100% - 24px), 0);
   }
 }
+
+
+/* Version 1.19: true viewport centring and rasterised cloud transition */
+
+/* The hero content is centred against the viewport itself. */
+.hero.page-shell {
+  width: 100%;
+  min-height: 100svh;
+  margin: 0;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-inner {
+  width: min(940px, 100%);
+  margin: 0 auto;
+  padding: 0;
+}
+
+.hero-name,
+.hero-role,
+.hero-tagline,
+.hero-socials {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Replace expensive CSS cloud construction with pre-rendered transparent images. */
+.cloud-reveal {
+  --cloud-break: 0;
+  position: relative;
+  z-index: 5;
+  height: clamp(470px, 58vw, 760px);
+  margin-top: clamp(-305px, -22vw, -190px);
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+  contain: layout paint;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 79%, rgba(0,0,0,.84) 89%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 79%, rgba(0,0,0,.84) 89%, transparent 100%);
+}
+
+.cloud-bank {
+  position: absolute;
+  inset: 0 -9%;
+  width: 118%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  filter: none !important;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.cloud-bank::before,
+.cloud-bank::after {
+  display: none !important;
+}
+
+.cloud-bank-back {
+  background-image: url("/assets/images/cloud-back.png");
+  opacity: calc(.82 - var(--cloud-break) * .75);
+  transform: translate3d(calc(var(--cloud-break) * -10vw), calc(var(--cloud-break) * 9vh), 0) scale(calc(1.08 + var(--cloud-break) * .05));
+}
+
+.cloud-bank-middle {
+  background-image: url("/assets/images/cloud-mid.png");
+  opacity: calc(.94 - var(--cloud-break) * .88);
+  transform: translate3d(calc(var(--cloud-break) * 15vw), calc(var(--cloud-break) * 15vh), 0) scale(calc(1.04 + var(--cloud-break) * .08));
+}
+
+.cloud-bank-front {
+  background-image: url("/assets/images/cloud-front.png");
+  opacity: calc(1 - var(--cloud-break) * .96);
+  transform: translate3d(calc(var(--cloud-break) * -21vw), calc(var(--cloud-break) * 22vh), 0) scale(calc(1.12 + var(--cloud-break) * .12));
+}
+
+.cloud-haze {
+  position: absolute;
+  inset: 8% -8% 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 18% 58%, rgba(242,249,253,.34), transparent 35%),
+    radial-gradient(ellipse at 75% 52%, rgba(236,246,252,.28), transparent 38%);
+  opacity: calc(.62 - var(--cloud-break) * .58);
+  transform: translate3d(0, calc(var(--cloud-break) * 10vh), 0);
+  filter: none;
+  will-change: transform, opacity;
+}
+
+.cloud-wisp {
+  display: none;
+}
+
+.cloud-fade {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  background: linear-gradient(
+    to bottom,
+    transparent 49%,
+    rgba(7,21,34,.03) 68%,
+    rgba(7,21,34,.34) 87%,
+    rgba(7,21,34,1) 100%
+  );
+  opacity: calc(.42 + var(--cloud-break) * .58);
+  will-change: opacity;
+}
+
+.cloud-reveal + .section {
+  margin-top: clamp(-338px, -24vw, -220px);
+  padding-top: clamp(345px, 28vw, 470px);
+}
+
+@media (max-width: 700px) {
+  .hero.page-shell {
+    min-height: 100svh;
+    padding: 0 8px;
+  }
+
+  .hero-inner {
+    width: 100%;
+  }
+
+  .cloud-reveal {
+    height: 465px;
+    margin-top: -225px;
+    contain: strict;
+  }
+
+  .cloud-bank {
+    inset-inline: -28%;
+    width: 156%;
+    background-size: auto 100%;
+  }
+
+  .cloud-reveal + .section {
+    margin-top: -248px;
+    padding-top: 282px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud-bank,
+  .cloud-haze,
+  .cloud-fade {
+    transform: none !important;
+    transition: none !important;
+  }
+}

@@ -160,27 +160,37 @@ if (siteHeader) {
 const cloudReveal = document.querySelector('.cloud-reveal');
 
 if (cloudReveal) {
-  let cloudFramePending = false;
+  let currentCloudProgress = 0;
+  let targetCloudProgress = 0;
+  let cloudAnimationFrame = 0;
 
-  const updateCloudReveal = () => {
-    const rect = cloudReveal.getBoundingClientRect();
-    const viewportHeight = window.innerHeight || 1;
-    const rawProgress = (viewportHeight - rect.top) / (viewportHeight * 1.05);
-    const progress = Math.min(1, Math.max(0, rawProgress));
-    const eased = progress * progress * (3 - (2 * progress));
+  const setCloudTarget = () => {
+    const viewportHeight = Math.max(window.innerHeight, 1);
+    targetCloudProgress = Math.min(1, Math.max(0, window.scrollY / (viewportHeight * 0.72)));
 
-    cloudReveal.style.setProperty('--cloud-break', eased.toFixed(4));
-    cloudFramePending = false;
-  };
-
-  const requestCloudUpdate = () => {
-    if (!cloudFramePending) {
-      cloudFramePending = true;
-      window.requestAnimationFrame(updateCloudReveal);
+    if (!cloudAnimationFrame) {
+      cloudAnimationFrame = window.requestAnimationFrame(animateCloudReveal);
     }
   };
 
-  requestCloudUpdate();
-  window.addEventListener('scroll', requestCloudUpdate, { passive: true });
-  window.addEventListener('resize', requestCloudUpdate, { passive: true });
+  const animateCloudReveal = () => {
+    currentCloudProgress += (targetCloudProgress - currentCloudProgress) * 0.14;
+
+    if (Math.abs(targetCloudProgress - currentCloudProgress) < 0.001) {
+      currentCloudProgress = targetCloudProgress;
+    }
+
+    const eased = currentCloudProgress * currentCloudProgress * (3 - (2 * currentCloudProgress));
+    cloudReveal.style.setProperty('--cloud-break', eased.toFixed(4));
+
+    if (currentCloudProgress !== targetCloudProgress) {
+      cloudAnimationFrame = window.requestAnimationFrame(animateCloudReveal);
+    } else {
+      cloudAnimationFrame = 0;
+    }
+  };
+
+  setCloudTarget();
+  window.addEventListener('scroll', setCloudTarget, { passive: true });
+  window.addEventListener('resize', setCloudTarget, { passive: true });
 }
