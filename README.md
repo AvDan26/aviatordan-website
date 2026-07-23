@@ -42,3 +42,10 @@ On Mac, use Command + Shift + R.
 - assets/css/styles.css
 - assets/js/main.js
 - assets/images/
+
+## Version 1.1 changes
+
+- Updated Home page wording
+- Removed About from the navigation
+- Updated Community card text
+- Replaced the footer bar and social links with a plain copyright line
