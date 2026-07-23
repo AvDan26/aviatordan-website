@@ -686,8 +686,6 @@ button {
 
 .contact-wrap {
   min-height: 70svh;
-  display: grid;
-  place-items: center;
   padding: 125px 0 96px;
 }
 
@@ -716,6 +714,83 @@ button {
   font-size: clamp(1.2rem, 3vw, 2rem);
   font-weight: 730;
   letter-spacing: -0.025em;
+}
+
+
+.collaboration-panel {
+  width: min(1080px, 100%);
+  margin: 34px auto 0;
+  padding: clamp(38px, 7vw, 72px);
+  border: 1px solid var(--line);
+  border-radius: 32px;
+  background: linear-gradient(150deg, rgba(255,255,255,.095), rgba(255,255,255,.035));
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.collaboration-copy {
+  max-width: 790px;
+}
+
+.collaboration-panel h2 {
+  margin: 12px 0 0;
+  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.collaboration-copy > p:not(.eyebrow) {
+  margin: 24px 0 0;
+  color: var(--muted-strong);
+  font-size: 1.08rem;
+  line-height: 1.72;
+}
+
+.experience-block {
+  margin-top: clamp(38px, 6vw, 62px);
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+
+.experience-label {
+  margin: 0 0 20px;
+  color: var(--blue-light);
+  font-size: 0.77rem;
+  font-weight: 720;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.experience-grid li {
+  display: grid;
+  min-height: 82px;
+  place-items: center;
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 18px;
+  background: rgba(255,255,255,.045);
+  color: var(--text);
+  font-size: 0.98rem;
+  font-weight: 670;
+  line-height: 1.3;
+  text-align: center;
+  transition: transform 220ms ease, background 220ms ease, border-color 220ms ease;
+}
+
+.experience-grid li:hover {
+  transform: translateY(-3px);
+  border-color: rgba(130, 203, 255, 0.26);
+  background: rgba(255,255,255,.075);
 }
 
 .not-found {
@@ -790,6 +865,11 @@ button {
     border-bottom: 1px solid var(--line);
   }
 
+
+  .experience-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .destination-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -805,6 +885,22 @@ button {
 }
 
 @media (max-width: 620px) {
+
+  .collaboration-panel {
+    margin-top: 22px;
+    padding: 32px 22px;
+    border-radius: 24px;
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-grid li {
+    min-height: 68px;
+  }
+
+
   .brand {
     top: max(14px, env(safe-area-inset-top));
     left: max(14px, env(safe-area-inset-left));
