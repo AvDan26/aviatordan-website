@@ -118,3 +118,11 @@ On Mac, use Command + Shift + R.
 - Added Instagram-style position dots beneath the slideshow.
 - Added automatic cycling, dot navigation and mobile swipe gestures.
 - Pauses automatic cycling while hovered on desktop.
+
+
+## Version 1.21
+
+- Replaced the first About slideshow image with IMG_7706.jpg.
+- Increased cloud density and depth so the transition reads as a cloud bank rather than smoke.
+- Expanded the cloud coverage across the hero.
+- Preserved the lightweight mobile animation approach.
