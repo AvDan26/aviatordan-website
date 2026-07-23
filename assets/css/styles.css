@@ -690,8 +690,14 @@ button {
 }
 
 .contact-panel {
-  width: min(900px, 100%);
+  display: flex;
+  width: min(1080px, 100%);
+  min-height: 535px;
+  margin: 0 auto;
   padding: clamp(42px, 8vw, 88px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   border-radius: 32px;
 }
@@ -885,6 +891,12 @@ button {
 }
 
 @media (max-width: 620px) {
+
+  .contact-panel {
+    min-height: 430px;
+    padding: 48px 22px;
+    border-radius: 24px;
+  }
 
   .collaboration-panel {
     margin-top: 22px;
