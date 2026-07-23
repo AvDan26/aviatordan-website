@@ -80,3 +80,26 @@ if ('IntersectionObserver' in window && !reduceMotion) {
 } else {
   revealItems.forEach((item) => item.classList.add('is-visible'));
 }
+
+
+// Auto-hide navigation
+const header=document.querySelector("header");
+let lastScrollY=window.scrollY;
+
+window.addEventListener("scroll",()=>{
+  const y=window.scrollY;
+
+  if(y>20){
+    header.classList.add("scrolled");
+  }else{
+    header.classList.remove("scrolled");
+  }
+
+  if(y>lastScrollY && y>100){
+    header.classList.add("nav-hidden");
+  }else{
+    header.classList.remove("nav-hidden");
+  }
+
+  lastScrollY=y;
+});

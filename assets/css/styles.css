@@ -816,3 +816,16 @@ button {
     transform: none;
   }
 }
+
+
+/* Auto-hide navigation */
+header{
+  transition: transform .35s ease, background-color .35s ease, backdrop-filter .35s ease;
+}
+header.scrolled{
+  background: rgba(10,18,36,.75);
+  backdrop-filter: blur(16px);
+}
+header.nav-hidden{
+  transform: translateY(-100%);
+}
