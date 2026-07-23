@@ -155,3 +155,19 @@ if (siteHeader) {
     distance = 0;
   });
 }
+
+
+const cloudReveal = document.querySelector('.cloud-reveal');
+
+if (cloudReveal) {
+  const updateCloudReveal = () => {
+    const rect = cloudReveal.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || 1;
+    const progress = Math.min(1, Math.max(0, (viewportHeight - rect.top) / (viewportHeight * 0.82)));
+    cloudReveal.style.setProperty('--cloud-break', progress.toFixed(3));
+  };
+
+  updateCloudReveal();
+  window.addEventListener('scroll', updateCloudReveal, { passive: true });
+  window.addEventListener('resize', updateCloudReveal);
+}

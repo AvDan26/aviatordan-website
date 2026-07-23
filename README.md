@@ -65,3 +65,16 @@ On Mac, use Command + Shift + R.
 - Added `/work-with-me/` and redirected the old Contact URLs.
 - Added a simple desktop navigation with Home and Work With Me.
 - Kept the hamburger menu for smaller screens.
+
+
+## Version 1.16
+
+- Moved the AviatorDan logo into the top-left header.
+- Kept desktop navigation on the right and the hamburger menu on mobile only.
+- Made mobile hero buttons compact rather than full-width.
+- Moved “Hi, I'm Dan.” into the opening biography paragraph.
+- Removed “Scroll to explore”.
+- Added a layered cloud curtain that separates as the visitor scrolls.
+- Changed the footer to “© 2026 AviatorDan”.
+- Aligned the biography text with the top of Dan's photo on desktop.
+- Removed the “Where to next?” section.
