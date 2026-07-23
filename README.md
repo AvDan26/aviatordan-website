@@ -1,31 +1,16 @@
 # AviatorDan website
 
-A premium, multi-page static website designed for GitHub Pages.
+Static GitHub Pages website for AviatorDan.
 
-## Upload to GitHub
+## Pages
 
-Upload everything in this folder to the root of your `aviatordan-site` repository. Then enable GitHub Pages from the `main` branch and `/root` folder.
+- `index.html` — Home and About combined
+- `community.html` — Community links
+- `contact.html` — Contact details
+- `about.html` — Redirects old About links to the About section on the homepage
 
-## Automatic latest YouTube videos
+## Publish on GitHub Pages
 
-The website is already coded to show the latest three uploads automatically through the official YouTube Data API.
+Upload every file and folder in this package to the root of your repository, replacing the existing versions. In **Settings → Pages**, publish from the `main` branch and `/ (root)` folder.
 
-1. Create a YouTube Data API v3 key in Google Cloud Console.
-2. Find your YouTube Channel ID in YouTube advanced account settings.
-3. Open `assets/js/video-config.js`.
-4. Paste both values into `apiKey` and `channelId`.
-
-Without these values, the section displays a polished link to the channel rather than breaking.
-
-## Edit text and links
-
-- Homepage: `index.html`
-- About: `about.html`
-- Community: `community.html`
-- Contact: `contact.html`
-- Shared navigation/footer: `assets/js/components.js`
-- Colours and design: `assets/css/style.css`
-
-## Custom domain
-
-In GitHub: **Settings → Pages → Custom domain**, enter `aviatordan.com` and enable HTTPS once DNS is verified.
+No Google Cloud, YouTube API key or paid service is required.
