@@ -89,3 +89,14 @@ On Mac, use Command + Shift + R.
 - Added a two-by-two My Platforms section with branded platform colours and handles.
 - Compressed the Goals section, especially on mobile.
 - Added a compact Work With Me call-to-action after the Goals section.
+
+
+## Version 1.18
+
+- Removed the divider line running through the cloud transition.
+- Increased the cloud field so it occupies more of the hero area.
+- Refined cloud shading, haze and depth for a more realistic appearance.
+- Rebuilt the cloud scroll animation with requestAnimationFrame and eased progress.
+- Corrected hero centring on desktop and mobile.
+- Made the top-left logo hide and return with the navigation controls.
+- Updated the biography copy.

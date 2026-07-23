@@ -1824,3 +1824,166 @@ button {
     border-radius: 13px;
   }
 }
+
+
+/* Version 1.18: cloud and hero polish */
+
+.site-header.nav-hidden .header-brand {
+  transform: translate3d(0, calc(-100% - 34px), 0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.header-brand {
+  will-change: transform, opacity;
+  transition:
+    transform 460ms cubic-bezier(.22, 1, .36, 1),
+    opacity 280ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.hero {
+  display: grid;
+  place-items: center;
+}
+
+.hero-inner {
+  width: min(100%, 1180px);
+  margin-inline: auto;
+  transform: none;
+}
+
+.hero-content {
+  width: 100%;
+  margin-inline: auto;
+  text-align: center;
+}
+
+#about {
+  border-top: 0 !important;
+}
+
+.cloud-reveal {
+  height: clamp(410px, 52vw, 690px);
+  margin-top: clamp(-245px, -18vw, -145px);
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 76%,
+    rgba(0,0,0,.92) 84%,
+    rgba(0,0,0,.5) 93%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 76%,
+    rgba(0,0,0,.92) 84%,
+    rgba(0,0,0,.5) 93%,
+    transparent 100%
+  );
+}
+
+.cloud-haze {
+  background:
+    radial-gradient(ellipse at 8% 48%, rgba(255,255,255,.42), transparent 29%),
+    radial-gradient(ellipse at 31% 61%, rgba(238,247,253,.34), transparent 32%),
+    radial-gradient(ellipse at 58% 43%, rgba(255,255,255,.36), transparent 31%),
+    radial-gradient(ellipse at 84% 57%, rgba(231,243,251,.36), transparent 34%),
+    linear-gradient(to bottom, transparent 0%, rgba(225,239,248,.19) 31%, rgba(240,248,253,.56) 70%, transparent 100%);
+  filter: blur(24px);
+}
+
+.cloud-bank {
+  height: 82%;
+  transition: none;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.cloud-bank::before,
+.cloud-bank::after {
+  background:
+    radial-gradient(circle at 44% 35%,
+      rgba(255,255,255,1) 0 22%,
+      rgba(248,251,254,.98) 35%,
+      rgba(228,239,247,.9) 54%,
+      rgba(177,201,218,.32) 72%,
+      transparent 79%);
+  box-shadow:
+    7vw -4vw 0 1.4vw rgba(253,254,255,.98),
+    15vw 1vw 0 3.6vw rgba(231,242,249,.95),
+    25vw -5vw 0 2.5vw rgba(255,255,255,.99),
+    36vw 1vw 0 5vw rgba(225,239,248,.94),
+    48vw -4vw 0 3.8vw rgba(252,254,255,.99),
+    61vw 2vw 0 5.2vw rgba(222,237,247,.93),
+    74vw -5vw 0 3vw rgba(255,255,255,.99),
+    88vw 1vw 0 5vw rgba(223,238,247,.93),
+    102vw -4vw 0 3.7vw rgba(250,253,255,.98),
+    116vw 1vw 0 4.5vw rgba(222,237,247,.92),
+    128vw -3vw 0 3.2vw rgba(250,253,255,.97);
+}
+
+.cloud-bank::before {
+  bottom: 0;
+}
+
+.cloud-bank::after {
+  bottom: -19%;
+}
+
+.cloud-bank-back {
+  filter: blur(10px);
+}
+
+.cloud-bank-middle {
+  filter: blur(5px);
+}
+
+.cloud-bank-front {
+  filter: blur(2.4px);
+}
+
+.cloud-fade {
+  background:
+    linear-gradient(to bottom,
+      transparent 38%,
+      rgba(7,21,34,.04) 61%,
+      rgba(7,21,34,.25) 80%,
+      rgba(7,21,34,.72) 93%,
+      rgba(7,21,34,1) 100%);
+}
+
+.cloud-reveal + .section {
+  margin-top: clamp(-282px, -20vw, -175px);
+  padding-top: clamp(285px, 24vw, 390px);
+}
+
+@media (max-width: 700px) {
+  .hero {
+    min-height: 100svh;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .hero-inner,
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .cloud-reveal {
+    height: 400px;
+    margin-top: -175px;
+  }
+
+  .cloud-reveal + .section {
+    margin-top: -188px;
+    padding-top: 222px;
+  }
+
+  .site-header.nav-hidden .header-brand {
+    transform: translate3d(0, calc(-100% - 24px), 0);
+  }
+}

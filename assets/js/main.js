@@ -160,14 +160,27 @@ if (siteHeader) {
 const cloudReveal = document.querySelector('.cloud-reveal');
 
 if (cloudReveal) {
+  let cloudFramePending = false;
+
   const updateCloudReveal = () => {
     const rect = cloudReveal.getBoundingClientRect();
     const viewportHeight = window.innerHeight || 1;
-    const progress = Math.min(1, Math.max(0, (viewportHeight - rect.top) / (viewportHeight * 0.82)));
-    cloudReveal.style.setProperty('--cloud-break', progress.toFixed(3));
+    const rawProgress = (viewportHeight - rect.top) / (viewportHeight * 1.05);
+    const progress = Math.min(1, Math.max(0, rawProgress));
+    const eased = progress * progress * (3 - (2 * progress));
+
+    cloudReveal.style.setProperty('--cloud-break', eased.toFixed(4));
+    cloudFramePending = false;
   };
 
-  updateCloudReveal();
-  window.addEventListener('scroll', updateCloudReveal, { passive: true });
-  window.addEventListener('resize', updateCloudReveal);
+  const requestCloudUpdate = () => {
+    if (!cloudFramePending) {
+      cloudFramePending = true;
+      window.requestAnimationFrame(updateCloudReveal);
+    }
+  };
+
+  requestCloudUpdate();
+  window.addEventListener('scroll', requestCloudUpdate, { passive: true });
+  window.addEventListener('resize', requestCloudUpdate, { passive: true });
 }
