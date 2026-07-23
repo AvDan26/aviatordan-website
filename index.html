@@ -163,7 +163,30 @@
         animation: none;
       }
     }
-  </style>
+  
+
+    .reminder-button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:32px;
+      padding:14px 28px;
+      border-radius:999px;
+      background:linear-gradient(180deg,#49a8ff,#2e84da);
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      font-size:1rem;
+      box-shadow:0 10px 30px rgba(73,168,255,.25);
+      transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .reminder-button:hover{
+      transform:translateY(-2px);
+      filter:brightness(1.05);
+      box-shadow:0 16px 40px rgba(73,168,255,.35);
+    }
+
+</style>
 </head>
 <body>
   <main class="return-page">
@@ -174,6 +197,10 @@
       <img class="return-logo" src="/assets/images/aviatordan-logo.png" alt="">
       <h1>The Return of AviatorDan</h1>
       <p class="date">31st August 2026</p>
+
+      <a class="reminder-button" href="https://www.youtube.com/live/TTkTjpmf4jc?si=I9LQEcoCfQvjYUJU" target="_blank" rel="noopener">
+        Set your reminder ↗
+      </a>
     </div>
   </main>
 </body>
