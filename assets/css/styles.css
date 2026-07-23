@@ -696,10 +696,18 @@ button {
   margin: 0 auto;
   padding: clamp(42px, 8vw, 88px);
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  text-align: center;
+  text-align: left;
   border-radius: 32px;
+}
+
+.contact-panel > p:not(.eyebrow) {
+  max-width: 660px;
+}
+
+.contact-panel .email-link {
+  align-self: flex-start;
 }
 
 .contact-panel h1 {
@@ -895,6 +903,8 @@ button {
   .contact-panel {
     min-height: 430px;
     padding: 48px 22px;
+    align-items: flex-start;
+    text-align: left;
     border-radius: 24px;
   }
 
