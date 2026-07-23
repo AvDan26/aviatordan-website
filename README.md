@@ -55,3 +55,13 @@ On Mac, use Command + Shift + R.
 - Fixed CSS, JavaScript, favicon, and image paths on `/community/` and `/contact/`.
 - All local assets now use root-relative URLs such as `/assets/css/styles.css`.
 - Clean URLs remain enabled.
+
+
+## Version 1.15
+
+- Replaced the Community page with social icons in the homepage hero.
+- Added YouTube, Instagram, Discord and Facebook links.
+- Renamed Contact to Work With Me.
+- Added `/work-with-me/` and redirected the old Contact URLs.
+- Added a simple desktop navigation with Home and Work With Me.
+- Kept the hamburger menu for smaller screens.

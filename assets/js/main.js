@@ -39,10 +39,10 @@ document.querySelectorAll('[data-year]').forEach((node) => {
   node.textContent = new Date().getFullYear();
 });
 
-const currentFile = window.location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('.nav-links a').forEach((link) => {
-  const target = link.getAttribute('href');
-  if ((currentFile === 'index.html' && target === 'index.html') || target === currentFile) {
+const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+document.querySelectorAll('.nav-links a, .desktop-nav a').forEach((link) => {
+  const targetPath = new URL(link.href, window.location.origin).pathname.replace(/\/+$/, '') || '/';
+  if (targetPath === currentPath) {
     link.setAttribute('aria-current', 'page');
   }
 });
