@@ -78,3 +78,14 @@ On Mac, use Command + Shift + R.
 - Changed the footer to “© 2026 AviatorDan”.
 - Aligned the biography text with the top of Dan's photo on desktop.
 - Removed the “Where to next?” section.
+
+
+## Version 1.17
+
+- Kept the role and tagline on one line across desktop and mobile.
+- Removed the large hero buttons.
+- Added a fifth email icon linking to Work With Me.
+- Rebuilt the cloud transition with deeper cloud layers, haze, wisps and an evaporation fade.
+- Added a two-by-two My Platforms section with branded platform colours and handles.
+- Compressed the Goals section, especially on mobile.
+- Added a compact Work With Me call-to-action after the Goals section.
