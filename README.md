@@ -154,3 +154,9 @@ On Mac, use Command + Shift + R.
 ### Patreon URL
 
 The main Patreon button is intentionally disabled because no Patreon profile URL was supplied. Replace its `href="#"` with the final Patreon URL and remove the `is-disabled` class and `aria-disabled` attribute.
+
+
+## Version 1.31
+
+- Made all three Patreon tier cards equal height on desktop.
+- Updated the Why Patreon copy.

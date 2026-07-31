@@ -2774,3 +2774,36 @@ button {
     border-radius: 24px;
   }
 }
+
+
+/* Version 1.31: equal Patreon tier card heights */
+
+@media (min-width: 951px) {
+  .support-tier-grid {
+    align-items: stretch;
+  }
+
+  .support-tier-card {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+  }
+
+  .support-tier-image {
+    flex: 0 0 auto;
+  }
+
+  .support-tier-body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+  }
+
+  .tier-summary {
+    min-height: 82px;
+  }
+
+  .tier-perks {
+    flex: 1 1 auto;
+  }
+}
