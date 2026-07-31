@@ -264,3 +264,13 @@ if (aboutSlideshow) {
   aboutSlideshow.addEventListener('mouseleave', startAboutAutoplay);
   startAboutAutoplay();
 }
+
+
+document.querySelectorAll('.tier-toggle').forEach((button) => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.support-tier-card');
+    const isOpen = card.classList.toggle('perks-open');
+    button.setAttribute('aria-expanded', String(isOpen));
+    button.firstChild.textContent = isOpen ? 'Show fewer perks ' : 'View all perks ';
+  });
+});

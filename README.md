@@ -140,3 +140,17 @@ On Mac, use Command + Shift + R.
 
 - Replaced the Entertain aircraft icon with a happy face outline.
 - Removed the duplicate full-width divider lines beneath the mobile goal items.
+
+
+## Version 1.27
+
+- Added a Support the Channel page at `/support-the-channel/`.
+- Added Supporter, Insider and VIP Patreon tiers with supplied artwork.
+- Tiers appear horizontally on desktop and vertically on smaller screens.
+- Mobile perks use a faded preview with an expandable View all perks control.
+- Added membership pricing location disclaimer.
+- Added Support the Channel and Merch Store to both desktop and mobile navigation.
+
+### Patreon URL
+
+The main Patreon button is intentionally disabled because no Patreon profile URL was supplied. Replace its `href="#"` with the final Patreon URL and remove the `is-disabled` class and `aria-disabled` attribute.
